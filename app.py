@@ -57,7 +57,18 @@ def validate_input(caste, percentile, rank, branch):
     errors = []
     
     # Validate caste
-    valid_castes = ['General', 'OBC', 'SC', 'ST', 'EWS', 'VJ', 'NT1', 'NT2', 'NT3', 'SBC']
+    valid_castes = ['General', 'SC', 'ST', 'GVJS', 'GNT1S', 'GNT2S', 'GNT3S', 'OBC',
+       'GSEBCS', 'LVJS', 'LNT2S', 'LSEBCS', 'PWDOPENS', 'PWDOBCS',
+       'DEFOPENS', 'DEFOBCS', 'TFWS', 'PWDROBC', 'DEFRSEBC', 'EWS',
+       'LNT1S', 'LNT3S', 'PWDRSCS', 'DEFROBCS', 'ORPHAN', 'DEFRNT1S',
+       'GNT2H', 'GSEBCH', 'LOPENH', 'LOBCH', 'LSEBCH', 'GSCO', 'GVJO',
+       'LOPENO', 'GVJH', 'GOPENO', 'GOBCO', 'GSEBCO', 'LOBCO', 'LSCH',
+       'GNT3H', 'LSTH', 'LVJH', 'LNT1H', 'PWDOPENH', 'GNT1O', 'GNT2O',
+       'GNT3O', 'LSTO', 'GNT1H', 'LNT3H', 'PWDOBCH', 'GSTO', 'LSCO',
+       'LVJO', 'LNT2O', 'LNT2H', 'LSEBCO', 'LNT1O', 'LNT3O', 'DEFSCS',
+       'PWDRSTS', 'MI', 'PWDRSEBC', 'PWDRNT2S', 'DEFRSCS', 'DEFRNT2S',
+       'PWDSCS', 'DEFSEBCS', 'DEFRVJS', 'PWDSCH', 'PWDSEBCS', 'PWDRSCH',
+       'PWDRSTH', 'DEFRNT3S', 'PWDRVJS', 'PWDRNT3S', 'PWDRNT1S', 'DEFSTS']
     if caste not in valid_castes:
         errors.append("Invalid caste selection")
     
@@ -78,12 +89,8 @@ def validate_input(caste, percentile, rank, branch):
         errors.append("Invalid rank format")
     
     # Validate branch
-    valid_branches = [
-        'Computer Engineering', 'Information Technology',
-        'Electronics and Telecommunication Engineering', 'Artificial Intelligence',
-        'Electrical Engineering', 'Civil Engineering', 'Mechanical Engineering',
-        'Instrumentation Engineering', 'Chemical Engineering', 'Biomedical Engineering'
-    ]
+    valid_branches = ['Civil Engineering', 'Computer Science and Engineering', 'Information Technology', 'Electrical Engineering', 'Electronics and Telecommunication Engg', 'Instrumentation Engineering', 'Mechanical Engineering', 'Food Technology', 'Oil and Paints Technology', 'Paper and Pulp Technology', 'Petro Chemical Engineering', 'Computer Engineering', 'Electrical Engg[Electronics and Power]', 'Artificial Intelligence (AI) and Data Science', 'Computer Science and Engineering (IoT)', 'Computer Science and Engineering(Artificial Intelligence and Machine Learning)', 'Artificial Intelligence and Data Science', 'Chemical Engineering', 'Textile Engineering / Technology', 'Computer Science and Engineering(Data Science)', 'Production Engineering', 'Textile Technology', 'Pharmaceutical and Fine Chemical Technology', 'Artificial Intelligence and Machine Learning', 'Electronics and Computer Engineering', 'VLSI', '5G', 'Agricultural Engineering', 'Computer Science and Design', 'Plastic and Polymer Engineering', 'Mechatronics Engineering', 'Mechanical & Automation Engineering', 'Automation and Robotics', 'Architectural Assistantship', 'Electronics Engineering ( VLSI Design and Technology)', 'Electrical and Electronics Engineering', 'Electronics and Computer Science', 'Safety and Fire Engineering', 'Electronics and Communication(Advanced Communication Technology)', 'Artificial Intelligence', 'Computer Science', 'Electronics Engineering', 'Production Engineering[Sandwich]', 'Dyestuff Technology', 'Oil,Oleochemicals and Surfactants Technology', 'Pharmaceuticals Chemistry and Technology', 'Fibres and Textile Processing Technology', 'Polymer Engineering and Technology', 'Food Engineering and Technology', 'Surface Coating Technology', 'Food Technology And Management', 'Civil and infrastructure Engineering', 'Bio Medical Engineering', 'Computer Science and Engineering (Internet of Things and Cyber Security Including Block Chain', 'Data Science', 'Cyber Security', 'Electronics and Communication (Advanced Communication Technology)', 'Automobile Engineering', 'Internet of Things (IoT)', 'Mechanical and Mechatronics Engineering (Additive Manufacturing)', 'Computer Science and Engineering(Cyber Security)', 'Mechanical Engineering Automobile', 'Electrical and Computer Engineering', 'Civil Engineering and Planning', 'Electronics and Biomedical Engineering', 'Computer Science and Information Technology', 'Data Engineering', 'Computer Technology', 'Electronics and Communication Engineering', 'Computer Science and Engineering (Cyber Security)', 'Computer Science and Engineering (Artificial Intelligence)', 'Aeronautical Engineering', 'Bio Technology', 'Industrial IoT', 
+                      'Robotics and Artificial Intelligence', 'Mining Engineering', 'Computer Science and Business Systems', 'Fire Engineering', 'Plastic Technology', 'Oil Fats and Waxes Technology', 'Paints Technology', 'Instrumentation and Control Engineering', 'Robotics and Automation', 'Structural Engineering', 'Civil and Environmental Engineering', 'Computer Science and Technology', 'Computer Engineering (Software Engineering)', 'Technical Textiles', 'Fashion Technology', 'Man Made Textile Technology', 'Textile Chemistry', 'Computer Science and Engineering (Artificial Intelligence and Data Science)', 'Printing and Packing Technology', 'Mechanical Engineering[Sandwich]', 'Electrical, Electronics and Power', 'Oil Technology', 'Manufacturing Science and Engineering', 'Metallurgy and Material Technology']
     if branch not in valid_branches:
         errors.append("Invalid branch selection")
     

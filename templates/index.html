@@ -34,19 +34,90 @@
             <form method="POST" class="prediction-form" id="predictionForm">
                 <div class="form-group">
                     <label for="caste">Category <span class="required">*</span></label>
-                    <select name="caste" id="caste" required>
-                        <option value="">-- Select Category --</option>
-                        <option value="General">General</option>
-                        <option value="OBC">OBC</option>
-                        <option value="SC">SC</option>
-                        <option value="ST">ST</option>
-                        <option value="EWS">EWS</option>
-                        <option value="VJ">VJ (Vimukta Jati)</option>
-                        <option value="NT1">NT1 (Nomadic Tribe 1)</option>
-                        <option value="NT2">NT2 (Nomadic Tribe 2)</option>
-                        <option value="NT3">NT3 (Nomadic Tribe 3)</option>
-                        <option value="SBC">SBC (Special Backward Class)</option>
-                    </select>
+                   <select name="caste" id="caste" required>
+    <option value="">-- Select Category --</option>
+    <option value="General">General</option>
+    <option value="SC">SC</option>
+    <option value="ST">ST</option>
+    <option value="GVJS">GVJS</option>
+    <option value="GNT1S">GNT1S</option>
+    <option value="GNT2S">GNT2S</option>
+    <option value="GNT3S">GNT3S</option>
+    <option value="OBC">OBC</option>
+    <option value="GSEBCS">GSEBCS</option>
+    <option value="LVJS">LVJS</option>
+    <option value="LNT2S">LNT2S</option>
+    <option value="LSEBCS">LSEBCS</option>
+    <option value="PWDOPENS">PWDOPENS</option>
+    <option value="PWDOBCS">PWDOBCS</option>
+    <option value="DEFOPENS">DEFOPENS</option>
+    <option value="DEFOBCS">DEFOBCS</option>
+    <option value="TFWS">TFWS</option>
+    <option value="PWDROBC">PWDROBC</option>
+    <option value="DEFRSEBC">DEFRSEBC</option>
+    <option value="EWS">EWS</option>
+    <option value="LNT1S">LNT1S</option>
+    <option value="LNT3S">LNT3S</option>
+    <option value="PWDRSCS">PWDRSCS</option>
+    <option value="DEFROBCS">DEFROBCS</option>
+    <option value="ORPHAN">ORPHAN</option>
+    <option value="DEFRNT1S">DEFRNT1S</option>
+    <option value="GNT2H">GNT2H</option>
+    <option value="GSEBCH">GSEBCH</option>
+    <option value="LOPENH">LOPENH</option>
+    <option value="LOBCH">LOBCH</option>
+    <option value="LSEBCH">LSEBCH</option>
+    <option value="GSCO">GSCO</option>
+    <option value="GVJO">GVJO</option>
+    <option value="LOPENO">LOPENO</option>
+    <option value="GVJH">GVJH</option>
+    <option value="GOPENO">GOPENO</option>
+    <option value="GOBCO">GOBCO</option>
+    <option value="GSEBCO">GSEBCO</option>
+    <option value="LOBCO">LOBCO</option>
+    <option value="LSCH">LSCH</option>
+    <option value="GNT3H">GNT3H</option>
+    <option value="LSTH">LSTH</option>
+    <option value="LVJH">LVJH</option>
+    <option value="LNT1H">LNT1H</option>
+    <option value="PWDOPENH">PWDOPENH</option>
+    <option value="GNT1O">GNT1O</option>
+    <option value="GNT2O">GNT2O</option>
+    <option value="GNT3O">GNT3O</option>
+    <option value="LSTO">LSTO</option>
+    <option value="GNT1H">GNT1H</option>
+    <option value="LNT3H">LNT3H</option>
+    <option value="PWDOBCH">PWDOBCH</option>
+    <option value="GSTO">GSTO</option>
+    <option value="LSCO">LSCO</option>
+    <option value="LVJO">LVJO</option>
+    <option value="LNT2O">LNT2O</option>
+    <option value="LNT2H">LNT2H</option>
+    <option value="LSEBCO">LSEBCO</option>
+    <option value="LNT1O">LNT1O</option>
+    <option value="LNT3O">LNT3O</option>
+    <option value="DEFSCS">DEFSCS</option>
+    <option value="PWDRSTS">PWDRSTS</option>
+    <option value="MI">MI</option>
+    <option value="PWDRSEBC">PWDRSEBC</option>
+    <option value="PWDRNT2S">PWDRNT2S</option>
+    <option value="DEFRSCS">DEFRSCS</option>
+    <option value="DEFRNT2S">DEFRNT2S</option>
+    <option value="PWDSCS">PWDSCS</option>
+    <option value="DEFSEBCS">DEFSEBCS</option>
+    <option value="DEFRVJS">DEFRVJS</option>
+    <option value="PWDSCH">PWDSCH</option>
+    <option value="PWDSEBCS">PWDSEBCS</option>
+    <option value="PWDRSCH">PWDRSCH</option>
+    <option value="PWDRSTH">PWDRSTH</option>
+    <option value="DEFRNT3S">DEFRNT3S</option>
+    <option value="PWDRVJS">PWDRVJS</option>
+    <option value="PWDRNT3S">PWDRNT3S</option>
+    <option value="PWDRNT1S">PWDRNT1S</option>
+    <option value="DEFSTS">DEFSTS</option>
+</select>
+
+                
                 </div>
 
                 <div class="form-group">
@@ -75,19 +146,108 @@
 
                 <div class="form-group">
                     <label for="branch">Engineering Branch <span class="required">*</span></label>
-                    <select name="branch" id="branch" required>
-                        <option value="">-- Select Branch --</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Electronics and Telecommunication Engineering">Electronics & Telecommunication</option>
-                        <option value="Artificial Intelligence">Artificial Intelligence</option>
-                        <option value="Electrical Engineering">Electrical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Instrumentation Engineering">Instrumentation Engineering</option>
-                        <option value="Chemical Engineering">Chemical Engineering</option>
-                        <option value="Biomedical Engineering">Biomedical Engineering</option>
-                    </select>
+                   <select name="branch" id="branch" required>
+  <option value="">-- Select Branch --</option>
+
+  <!-- 🔝 Top Popular Branches First -->
+  <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+  <option value="Computer Engineering">Computer Engineering</option>
+  <option value="Information Technology">Information Technology</option>
+  <option value="Artificial Intelligence">Artificial Intelligence</option>
+  <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
+  <option value="Artificial Intelligence and Machine Learning">Artificial Intelligence and Machine Learning</option>
+  <option value="Data Science">Data Science</option>
+  <option value="Cyber Security">Cyber Security</option>
+  <option value="Computer Science">Computer Science</option>
+
+  <!-- 🧠 Other Technical and Core Branches -->
+  <option value="Electronics and Telecommunication Engg">Electronics and Telecommunication Engg</option>
+  <option value="Electronics Engineering">Electronics Engineering</option>
+  <option value="Electrical Engineering">Electrical Engineering</option>
+  <option value="Mechanical Engineering">Mechanical Engineering</option>
+  <option value="Civil Engineering">Civil Engineering</option>
+  <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+  <option value="Chemical Engineering">Chemical Engineering</option>
+  <option value="Biomedical Engineering">Biomedical Engineering</option>
+  <option value="Production Engineering">Production Engineering</option>
+  <option value="Mechatronics Engineering">Mechatronics Engineering</option>
+  <option value="Robotics and Automation">Robotics and Automation</option>
+  <option value="Mining Engineering">Mining Engineering</option>
+  <option value="Bio Technology">Bio Technology</option>
+  <option value="Aeronautical Engineering">Aeronautical Engineering</option>
+  <option value="Automation and Robotics">Automation and Robotics</option>
+  <option value="Agricultural Engineering">Agricultural Engineering</option>
+  <option value="Computer Science and Design">Computer Science and Design</option>
+
+  <!-- 📦 All Remaining Branches (Grouped in One Place) -->
+  <option value="Computer Science and Engineering (IoT)">Computer Science and Engineering (IoT)</option>
+  <option value="Computer Science and Engineering(Artificial Intelligence and Machine Learning)">Computer Science and Engineering(Artificial Intelligence and Machine Learning)</option>
+  <option value="Computer Science and Engineering(Data Science)">Computer Science and Engineering(Data Science)</option>
+  <option value="Textile Engineering / Technology">Textile Engineering / Technology</option>
+  <option value="Textile Technology">Textile Technology</option>
+  <option value="Pharmaceutical and Fine Chemical Technology">Pharmaceutical and Fine Chemical Technology</option>
+  <option value="Electronics and Computer Engineering">Electronics and Computer Engineering</option>
+  <option value="VLSI">VLSI</option>
+  <option value="5G">5G</option>
+  <option value="Plastic and Polymer Engineering">Plastic and Polymer Engineering</option>
+  <option value="Mechanical & Automation Engineering">Mechanical & Automation Engineering</option>
+  <option value="Architectural Assistantship">Architectural Assistantship</option>
+  <option value="Electronics Engineering ( VLSI Design and Technology)">Electronics Engineering ( VLSI Design and Technology)</option>
+  <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+  <option value="Electronics and Computer Science">Electronics and Computer Science</option>
+  <option value="Safety and Fire Engineering">Safety and Fire Engineering</option>
+  <option value="Electronics and Communication(Advanced Communication Technology)">Electronics and Communication(Advanced Communication Technology)</option>
+  <option value="Production Engineering[Sandwich]">Production Engineering[Sandwich]</option>
+  <option value="Dyestuff Technology">Dyestuff Technology</option>
+  <option value="Oil,Oleochemicals and Surfactants Technology">Oil,Oleochemicals and Surfactants Technology</option>
+  <option value="Pharmaceuticals Chemistry and Technology">Pharmaceuticals Chemistry and Technology</option>
+  <option value="Fibres and Textile Processing Technology">Fibres and Textile Processing Technology</option>
+  <option value="Polymer Engineering and Technology">Polymer Engineering and Technology</option>
+  <option value="Food Engineering and Technology">Food Engineering and Technology</option>
+  <option value="Surface Coating Technology">Surface Coating Technology</option>
+  <option value="Food Technology And Management">Food Technology And Management</option>
+  <option value="Civil and infrastructure Engineering">Civil and infrastructure Engineering</option>
+  <option value="Bio Medical Engineering">Bio Medical Engineering</option>
+  <option value="Computer Science and Engineering (Internet of Things and Cyber Security Including Block Chain">Computer Science and Engineering (Internet of Things and Cyber Security Including Block Chain</option>
+  <option value="Electronics and Communication (Advanced Communication Technology)">Electronics and Communication (Advanced Communication Technology)</option>
+  <option value="Automobile Engineering">Automobile Engineering</option>
+  <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
+  <option value="Mechanical and Mechatronics Engineering (Additive Manufacturing)">Mechanical and Mechatronics Engineering (Additive Manufacturing)</option>
+  <option value="Computer Science and Engineering(Cyber Security)">Computer Science and Engineering(Cyber Security)</option>
+  <option value="Mechanical Engineering Automobile">Mechanical Engineering Automobile</option>
+  <option value="Electrical and Computer Engineering">Electrical and Computer Engineering</option>
+  <option value="Civil Engineering and Planning">Civil Engineering and Planning</option>
+  <option value="Electronics and Biomedical Engineering">Electronics and Biomedical Engineering</option>
+  <option value="Computer Science and Information Technology">Computer Science and Information Technology</option>
+  <option value="Data Engineering">Data Engineering</option>
+  <option value="Computer Technology">Computer Technology</option>
+  <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+  <option value="Computer Science and Engineering (Cyber Security)">Computer Science and Engineering (Cyber Security)</option>
+  <option value="Computer Science and Engineering (Artificial Intelligence)">Computer Science and Engineering (Artificial Intelligence)</option>
+  <option value="Computer Science and Business Systems">Computer Science and Business Systems</option>
+  <option value="Fire Engineering">Fire Engineering</option>
+  <option value="Plastic Technology">Plastic Technology</option>
+  <option value="Oil Fats and Waxes Technology">Oil Fats and Waxes Technology</option>
+  <option value="Paints Technology">Paints Technology</option>
+  <option value="Instrumentation and Control Engineering">Instrumentation and Control Engineering</option>
+  <option value="Robotics and Artificial Intelligence">Robotics and Artificial Intelligence</option>
+  <option value="Structural Engineering">Structural Engineering</option>
+  <option value="Civil and Environmental Engineering">Civil and Environmental Engineering</option>
+  <option value="Computer Science and Technology">Computer Science and Technology</option>
+  <option value="Computer Engineering (Software Engineering)">Computer Engineering (Software Engineering)</option>
+  <option value="Technical Textiles">Technical Textiles</option>
+  <option value="Fashion Technology">Fashion Technology</option>
+  <option value="Man Made Textile Technology">Man Made Textile Technology</option>
+  <option value="Textile Chemistry">Textile Chemistry</option>
+  <option value="Computer Science and Engineering (Artificial Intelligence and Data Science)">Computer Science and Engineering (Artificial Intelligence and Data Science)</option>
+  <option value="Printing and Packing Technology">Printing and Packing Technology</option>
+  <option value="Mechanical Engineering[Sandwich]">Mechanical Engineering[Sandwich]</option>
+  <option value="Electrical, Electronics and Power">Electrical, Electronics and Power</option>
+  <option value="Oil Technology">Oil Technology</option>
+  <option value="Manufacturing Science and Engineering">Manufacturing Science and Engineering</option>
+  <option value="Metallurgy and Material Technology">Metallurgy and Material Technology</option>
+</select>
+
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
