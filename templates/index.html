@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHT-CET Counseling Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 class="heading-gradient">🎓 MHT-CET Counseling Predictor</h1>
+            <p class="subtitle">Discover your top college options based on your MHT-CET performance</p>
+            
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash-message flash-{{ category }}">
+                                <span class="flash-icon">
+                                    {% if category == 'error' %}⚠️{% else %}ℹ️{% endif %}
+                                </span>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <form method="POST" class="prediction-form" id="predictionForm">
+                <div class="form-group">
+                    <label for="caste">Category <span class="required">*</span></label>
+                    <select name="caste" id="caste" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="General">General</option>
+                        <option value="OBC">OBC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="EWS">EWS</option>
+                        <option value="VJ">VJ (Vimukta Jati)</option>
+                        <option value="NT1">NT1 (Nomadic Tribe 1)</option>
+                        <option value="NT2">NT2 (Nomadic Tribe 2)</option>
+                        <option value="NT3">NT3 (Nomadic Tribe 3)</option>
+                        <option value="SBC">SBC (Special Backward Class)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="percentile">Percentile <span class="required">*</span></label>
+                    <input type="number" 
+                           step="any" 
+                           name="percentile" 
+                           id="percentile"
+                           placeholder="e.g. 88.501351" 
+                           min="0" 
+                           max="100" 
+                           required>
+                    <small class="help-text">Enter your exact MHT-CET percentile (e.g., 88.501351)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="rank">Merit Rank <span class="required">*</span></label>
+                    <input type="number" 
+                           name="rank" 
+                           id="rank"
+                           placeholder="e.g. 110" 
+                           min="1" 
+                           required>
+                    <small class="help-text">Enter your MHT-CET merit rank</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="branch">Engineering Branch <span class="required">*</span></label>
+                    <select name="branch" id="branch" required>
+                        <option value="">-- Select Branch --</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Electronics and Telecommunication Engineering">Electronics & Telecommunication</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Electrical Engineering">Electrical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+                        <option value="Chemical Engineering">Chemical Engineering</option>
+                        <option value="Biomedical Engineering">Biomedical Engineering</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">🔍 Predict My Colleges</span>
+                    <span class="btn-loading" style="display: none;">
+                        <span class="spinner"></span>
+                        Analyzing...
+                    </span>
+                </button>
+            </form>
+            
+            <div class="info-section">
+                <h3>💡 How it works</h3>
+                <ul>
+                    <li>Enter your MHT-CET details accurately</li>
+                    <li>Our AI model analyzes your profile</li>
+                    <li>Get personalized college recommendations</li>
+                    <li>Make informed decisions for your future</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form validation and loading state
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'flex';
+            submitBtn.disabled = true;
+            
+            // Validate form
+            const percentile = parseFloat(document.getElementById('percentile').value);
+            const rank = parseInt(document.getElementById('rank').value);
+            
+            if (percentile < 0 || percentile > 100) {
+                e.preventDefault();
+                alert('Percentile must be between 0 and 100');
+                resetButton();
+                return;
+            }
+            
+            if (rank <= 0) {
+                e.preventDefault();
+                alert('Rank must be a positive number');
+                resetButton();
+                return;
+            }
+            
+            function resetButton() {
+                btnText.style.display = 'block';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Auto-hide flash messages
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(message) {
+                message.style.opacity = '0';
+                setTimeout(function() {
+                    message.remove();
+                }, 300);
+            });
+        }, 5000);
+    </script>
+</body>
+</html>

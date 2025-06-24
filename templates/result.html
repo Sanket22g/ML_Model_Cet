@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your College Predictions - MHT-CET</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="result-container">
+            <!-- Header Section -->
+            <div class="result-header">
+                <h1 class="result-title">🎯 Your College Predictions</h1>
+                <div class="user-info">
+                    <div class="info-card">
+                        <span class="info-label">Branch:</span>
+                        <span class="info-value">{{ branch }}</span>
+                    </div>
+                    {% if user_data %}
+                    <div class="info-card">
+                        <span class="info-label">Category:</span>
+                        <span class="info-value">{{ user_data.caste }}</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">Percentile:</span>
+                        <span class="info-value">{{ user_data.percentile }}%</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">Rank:</span>
+                        <span class="info-value">{{ user_data.rank }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">{{ colleges|length }}</div>
+                    <div class="stat-label">Top Colleges</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ "%.1f"|format(chances[0] if chances else 0) }}%</div>
+                    <div class="stat-label">Best Match</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ "%.1f"|format((chances|sum)/chances|length if chances else 0) }}%</div>
+                    <div class="stat-label">Avg. Probability</div>
+                </div>
+            </div>
+
+            <!-- Colleges List -->
+            <div class="colleges-section">
+                <h2 class="section-title">📋 Recommended Colleges</h2>
+                <div class="college-list">
+                    {% for college in colleges %}
+                        <div class="college-card" data-rank="{{ loop.index }}">
+                            <div class="college-rank">
+                                <span class="rank-number">{{ loop.index }}</span>
+                                {% if loop.index <= 3 %}
+                                    <span class="rank-badge">
+                                        {% if loop.index == 1 %}🥇
+                                        {% elif loop.index == 2 %}🥈
+                                        {% else %}🥉
+                                        {% endif %}
+                                    </span>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="college-info">
+                                <h3 class="college-name">{{ college }}</h3>
+                                <div class="college-details">
+                                    <span class="branch-tag">{{ branch }}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="college-probability">
+                                <div class="probability-bar">
+                                    <div class="probability-fill" style="width: {{ chances[loop.index0] }}%"></div>
+                                </div>
+                                <span class="probability-text">{{ chances[loop.index0] }}%</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                    🔙 New Prediction
+                </a>
+                <button onclick="exportResults()" class="btn btn-primary">
+                    📊 Export Results
+                </button>
+                <button onclick="shareResults()" class="btn btn-outline">
+                    🔗 Share Results
+                </button>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <p><strong>Disclaimer:</strong> These predictions are based on historical data and machine learning algorithms. Actual admission results may vary based on various factors including seat availability, counseling rounds, and policy changes.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.college-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in');
+            });
+        });
+
+        // Export functionality
+        function exportResults() {
+            const results = [];
+            const cards = document.querySelectorAll('.college-card');
+            
+            cards.forEach((card, index) => {
+                const name = card.querySelector('.college-name').textContent;
+                const probability = card.querySelector('.probability-text').textContent;
+                results.push(`${index + 1}. ${name} - ${probability}`);
+            });
+            
+            const content = `MHT-CET College Predictions\n\nBranch: {{ branch }}\n{% if user_data %}Category: {{ user_data.caste }}\nPercentile: {{ user_data.percentile }}%\nRank: {{ user_data.rank }}\n{% endif %}\n\nTop Colleges:\n${results.join('\n')}\n\nGenerated on: ${new Date().toLocaleDateString()}`;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'mht-cet-predictions.txt';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Share functionality
+        function shareResults() {
+            const topCollege = document.querySelector('.college-name').textContent;
+            const shareText = `🎓 My MHT-CET prediction results are in! Top college: ${topCollege} for {{ branch }}. Check out your predictions too!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'MHT-CET College Predictions',
+                    text: shareText,
+                    url: window.location.origin
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(shareText).then(() => {
+                    alert('Results copied to clipboard!');
+                });
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
