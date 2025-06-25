@@ -232,8 +232,11 @@ def internal_server_error(e):
 if __name__ == "__main__":
     try:
         load_model_and_encoders()
-        app.run(debug=True, host='0.0.0.0', port=5000)
+        port = int(os.environ.get("PORT", 5000))
+        app.run(debug=True, host='0.0.0.0', port=port)
+
     except Exception as e:
         logger.error(f"Failed to start application: {str(e)}")
         print(f"Error: {str(e)}")
         print("Please ensure model files exist in the 'model' directory")
+       
